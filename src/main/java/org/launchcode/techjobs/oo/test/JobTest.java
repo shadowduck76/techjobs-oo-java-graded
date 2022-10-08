@@ -53,24 +53,26 @@ public class JobTest {
     public void testToStringContainsCorrectLabelsAndData () {
         Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         String jobString = job1.toString();
-        assertTrue(jobString.contains("ID: "+ job1.getId() + "\n"));
-        assertTrue(jobString.contains("Name: "+ job1.getName() + "\n"));
-        assertTrue(jobString.contains("Employer: "+ job1.getEmployer() + "\n"));
-        assertTrue(jobString.contains("Location: "+ job1.getLocation() + "\n"));
-        assertTrue(jobString.contains("Position Type: "+ job1.getPositionType() + "\n"));
-        assertTrue(jobString.contains("Core Competency: "+ job1.getCoreCompetency() + "\n"));
+        assertEquals(jobString,
+                "\nID: "+ job1.getId() +"\n" +
+                "Name: "+ job1.getName() + "\n" +
+                "Employer: "+ job1.getEmployer() + "\n" +
+                "Location: "+ job1.getLocation() + "\n" +
+                "Position Type: "+ job1.getPositionType() + "\n" +
+                "Core Competency: "+ job1.getCoreCompetency() + "\n");
     }
 
     @Test
     public void testToStringHandlesEmptyField () {
         Job job1 = new Job();
         String jobString = job1.toString();
-        assertTrue(jobString.contains("ID: "+ job1.getId() + "\n"));
-        assertTrue(jobString.contains("Name: Data not available\n"));
-        assertTrue(jobString.contains("Employer: Data not available\n"));
-        assertTrue(jobString.contains("Location: Data not available\n"));
-        assertTrue(jobString.contains("Position Type: Data not available\n"));
-        assertTrue(jobString.contains("Core Competency: Data not available\n"));
 
+        assertEquals(jobString,
+                "\nID: "+ job1.getId() +"\n" +
+                "Name: " + job1.getName() + "\n" +
+                "Employer: Data not available\n" +
+                "Location: Data not available\n" +
+                "Position Type: Data not available\n" +
+                "Core Competency: Data not available\n");
     }
 }

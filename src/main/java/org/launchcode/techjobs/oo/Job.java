@@ -35,33 +35,28 @@ public class Job {
 
     public String toString() {
         String errorString = "Data not available";
-        String returnString = "\n";
-        returnString += "ID: " + this.getId() + "\n";
-        if (this.getName() == null) {
-            returnString += "Name: "+ errorString + "\n";
-        } else {
-            returnString += "Name: " + this.getName() + "\n";
+        String returnString = "\nID: " + this.getId() + "\n";
+        if ( name == "") {
+            setName(errorString);
         }
-        if (this.getEmployer() == null){
-            returnString += "Employer: "+ errorString +"\n";
-        } else {
-            returnString += "Employer: " + this.getEmployer() + "\n";
+        if (employer == null || employer.getValue().equals("")){
+            setEmployer(new Employer(errorString));
         }
-        if (this.getLocation() == null){
-            returnString += "Location: "+ errorString +"\n";
-        } else {
-            returnString += "Location: " + this.getLocation() + "\n";
+        if (location == null || location.getValue().equals("")){
+            setLocation(new Location(errorString));
         }
-        if (this.getPositionType() == null){
-            returnString += "Position Type: "+ errorString +"\n";
-        } else {
-            returnString += "Position Type: " + this.getPositionType() + "\n";
+        if (positionType == null || positionType.getValue().equals("")){
+            setPositionType(new PositionType(errorString));
         }
-        if (this.getCoreCompetency() == null){
-            returnString += "Core Competency: "+ errorString +"\n";
-        } else {
-            returnString += "Core Competency: " + this.getCoreCompetency() + "\n";
+        if (coreCompetency == null || coreCompetency.getValue().equals("")){
+            setCoreCompetency(new CoreCompetency(errorString));
         }
+
+        returnString += "Name: " + this.getName() + "\n";
+        returnString += "Employer: " + this.getEmployer() + "\n";
+        returnString += "Location: " + this.getLocation() + "\n";
+        returnString += "Position Type: " + this.getPositionType() + "\n";
+        returnString += "Core Competency: " + this.getCoreCompetency() + "\n";
 
 
 
